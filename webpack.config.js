@@ -38,13 +38,14 @@ const config = {
     extensions : [".tsx",".ts",".jsx",".js"],
   },
   optimization:{
+    minimize: true,
     minimizer:[
       new TerserPlugin({
         terserOptions:{
           compress : {
             drop_console : true //콘솔로그 제거
           },
-          output : {
+          format : {
             comments : true, //주석제거
           },
         },
