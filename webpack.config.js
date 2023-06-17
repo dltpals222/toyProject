@@ -8,7 +8,7 @@ const config = {
   entry : path.resolve(__dirname, "src",'index.tsx'),
   output : {path:path.resolve(__dirname,'dist')},
   mode : isProduction ? "production" : "development",
-  plugin : [
+  plugins : [
     new HtmlWebpackPlugin({
       template : path.resolve(__dirname, "src","index.html"),
     }),
