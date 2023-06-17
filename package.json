@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build" : "npx webpack --mode=production --node-env=production",
-    "start" : "npx ts-node ./server/App_server.ts --node-env production --open",
+    "start" : "npx ts-node ./server/App_server.ts --node-env production",
     "build:dev": "npx webpack --mode=development"
   },
   "keywords": [],
