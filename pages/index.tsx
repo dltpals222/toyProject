@@ -5,7 +5,8 @@ import React from "react";
 const StartImg = () => {
   return (
     <div>
-      <Image alt="수체화" src={MA1920} className="height-100, rotate-90" />
+      <div>일단 내 이름이나 띄워 놓자</div>
+      <h1>이세민</h1>
     </div>
   );
 };
