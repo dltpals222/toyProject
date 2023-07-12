@@ -1,5 +1,3 @@
-import Image from "next/image";
-import MA1920 from "../public/img/—Pngtree—pure watercolor gradient colorful background_964413.jpg";
 import React from "react";
 
 const StartImg = () => {
@@ -11,4 +9,4 @@ const StartImg = () => {
   );
 };
 
-export default StartImg;
+export default Index;
