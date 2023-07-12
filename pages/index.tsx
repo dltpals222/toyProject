@@ -9,4 +9,4 @@ const StartImg = () => {
   );
 };
 
-export default Index;
+export default StartImg;
