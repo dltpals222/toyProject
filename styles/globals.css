@@ -2,9 +2,22 @@
 @tailwind components;
 @tailwind trility;
 
-.backgroundImage {
-  background-image: url("/img/—Pngtree—pure-watercolor-gradient-colorful-background_964413.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
+.blockContainer {
+  width: 800px;
+  height: 500px;
+}
+
+.blockStyle {
+  width: 400px;
+  height: 250px;
+}
+
+.innerBlockStyle {
+  width: 375px;
+  height: 250px;
+}
+
+.upperBlockStyle {
+  width: 425px;
+  height: 250px;
 }
