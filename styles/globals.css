@@ -3,21 +3,41 @@
 @tailwind trility;
 
 .blockContainer {
-  width: 800px;
-  height: 500px;
+  width: 606.06px;
+  height: 378.79px;
 }
 
 .blockStyle {
-  width: 400px;
-  height: 250px;
+  width: 303.03px;
+  height: 189.395px;
 }
 
-.innerBlockStyle {
-  width: 375px;
-  height: 250px;
+.decreaseBlockStyle {
+  width: 284px;
+  height: 189.395px;
 }
 
-.upperBlockStyle {
-  width: 425px;
-  height: 250px;
+.increaseBlockStyle {
+  width: 322.05999999999995px;
+  height: 189.395px;
+}
+
+.heightBlockContainer {
+  height: 606.06px;
+  width: 378.79px;
+}
+
+.heightBlockStyle {
+  height: 303.03px;
+  width: 189.395px;
+}
+
+.heightDecreaseBlockStyle {
+  height: 284px;
+  width: 189.395px;
+}
+
+.heightIncreaseBlockStyle {
+  height: 322.05999999999995px;
+  width: 189.395px;
 }
