@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const StartImg = () => {
-  const [divRotate, setDivRotate] = React.useState<number>(0);
+  const [divDisplay, setDivDisplay] = React.useState<string>("block");
   const [randomNumber, setRandomNumber] = React.useState<number>(0);
   const [randomNumberTwo, setRandomNumberTwo] = React.useState<number>(0);
 
@@ -11,29 +11,27 @@ const StartImg = () => {
   }
 
   function rotate() {
-    setDivRotate(divRotate + 90);
-    setRandomNumber(random(1, 900));
-    setRandomNumberTwo(random(1, 900));
+    setDivDisplay("none");
+    setTimeout(() => {
+      setDivDisplay("block");
+      setRandomNumber(random(1, 900));
+      setRandomNumberTwo(random(1, 900));
+    }, 1000);
   }
 
   return (
-    <div style={{ width: 1000, height: 1000 }} className="flex align-center relative">
-      {/* <Block blockNumber="first" colorStyle="signiture-color-red"></Block> */}
+    <div style={{ width: 1000, height: 1000 }} className="flex flex-auto align-center relative">
       <motion.div
-        onMouseOver={() => {
+        onClick={() => {
           rotate();
         }}
-        animate={{
-          rotate: divRotate,
+        style={{
+          width: 50,
+          height: 50,
+          backgroundColor: "blueviolet",
+          display: divDisplay,
           left: randomNumber,
           top: randomNumberTwo,
-        }}
-        style={{
-          width: 100,
-          height: 100,
-          backgroundColor: "blueviolet",
-          left: 0,
-          top: 0,
         }}
         className="absolute"
       />

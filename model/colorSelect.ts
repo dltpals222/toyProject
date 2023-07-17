@@ -29,7 +29,7 @@ const blockColorSelect = (colorStyle: ColorStyle, BGColor: string) => {
           first: `bg-${BGColor} increaseBlockStyle z-[1] rounded-br-p[20px]`,
           second: `bg-${BGColor} heightIncreaseBlockStyle z-[1] rounded-bl-p[20px]`,
           third: `bg-${BGColor} heightIncreaseBlockStyle z-[1] rounded-tr-p[20px]`,
-          fourth: `bg-${BGColor} increaseBlockStyle z-[1] rounded-tl-p[20px] absolute right-0`,
+          fourth: `bg-${BGColor} increaseBlockStyle z-[1] rounded-tl-p[20px] `,
         },
       },
       decrease: {
@@ -40,8 +40,8 @@ const blockColorSelect = (colorStyle: ColorStyle, BGColor: string) => {
       },
     },
     container: {
-      normal: "grid grid-cols-2 blockContainer m-10 relative",
-      height: "grid grid-cols-2 heightBlockContainer m-10 relative",
+      normal: "grid grid-cols-2 blockContainer m-10 ",
+      height: "grid grid-cols-2 heightBlockContainer m-10 ",
     },
   };
 
