@@ -1,19 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const StartImg = () => {
-  const [divRotate, setDivRotate] = React.useState<number>(0);
-  const [randomNumber, setRandomNumber] = React.useState<number>(0);
-  const [randomNumberTwo, setRandomNumberTwo] = React.useState<number>(0);
-  const [count, setCount] = React.useState<number>(0);
-  const [revertRotate, setRevertRotate] = React.useState<number>(0);
-  const [backgroundColor, setBackgroundColor] = React.useState<string>("blueviolet");
-  const [isPopupVisible, setIsPopupVisible] = React.useState<boolean>(false);
+  // 상태 관리
+  const [divRotate, setDivRotate] = useState<number>(0);
+  const [randomNumber, setRandomNumber] = useState<number>(0);
+  const [randomNumberTwo, setRandomNumberTwo] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
+  const [revertRotate, setRevertRotate] = useState<number>(0);
+  const [backgroundColor, setBackgroundColor] = useState<string>("blueviolet");
+  const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
+  const [borderRadius, setBorderRadius] = useState<string>("0%");
 
+  // random 함수
   function random(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  // 클릭시 count 증가
   function countUp() {
     const newCount = count + 1;
     setCount(newCount);
@@ -22,10 +26,12 @@ const StartImg = () => {
     }
   }
 
+  // count 초기화
   function resetCount() {
     setCount(0);
   }
 
+  // 회전 함수
   function rotate() {
     setDivRotate(divRotate + 90);
     setRandomNumber(random(1, 800));
@@ -33,93 +39,74 @@ const StartImg = () => {
     setRevertRotate(revertRotate - 90);
   }
 
+  // 이벤트1
   function eventOne() {
-    switch (true) {
-      case count >= 9 && count < 19:
-        setBackgroundColor("red");
+    type BackgroundColors = {
+      [key: number]: string;
+    };
+
+    const backgroundColors: BackgroundColors = {
+      9: "red",
+      19: "orange",
+      29: "yellow",
+      39: "green",
+      49: "blue",
+      59: "indigo",
+      69: "violet",
+      79: "purple",
+      89: "pink",
+      99: "black",
+      109: "#ffe4e1",
+      119: "#f0f0f0",
+      129: "gray",
+      139: "grey",
+      149: "silver",
+      159: "maroon",
+      169: "olive",
+      179: "teal",
+      189: "aqua",
+      199: "cyan",
+      209: "skyblue",
+      219: "orchid",
+      229: "purple",
+      239: "fuchsia",
+      249: "purple",
+      259: "pink",
+      269: "plum",
+    };
+
+    const countKeys = Object.keys(backgroundColors);
+
+    for (let i = 0; i < countKeys.length; i++) {
+      const key = parseInt(countKeys[i]);
+      if (count >= key && count < key + 10) {
+        setBackgroundColor(backgroundColors[key]);
         break;
-      case count >= 19 && count < 29:
-        setBackgroundColor("orange");
-        break;
-      case count >= 29 && count < 39:
-        setBackgroundColor("yellow");
-        break;
-      case count >= 39 && count < 49:
-        setBackgroundColor("green");
-        break;
-      case count >= 49 && count < 59:
-        setBackgroundColor("blue");
-        break;
-      case count >= 59 && count < 69:
-        setBackgroundColor("indigo");
-        break;
-      case count >= 69 && count < 79:
-        setBackgroundColor("violet");
-        break;
-      case count >= 79 && count < 89:
-        setBackgroundColor("purple");
-        break;
-      case count >= 89 && count < 99:
-        setBackgroundColor("pink");
-        break;
-      case count >= 99 && count < 109:
-        setBackgroundColor("black");
-        break;
-      case count >= 109 && count < 119:
-        setBackgroundColor("#ffe4e1");
-        break;
-      case count >= 119 && count < 129:
-        setBackgroundColor("#f0f0f0");
-        break;
-      case count >= 129 && count < 139:
-        setBackgroundColor("gray");
-        break;
-      case count >= 139 && count < 149:
-        setBackgroundColor("grey");
-        break;
-      case count >= 149 && count < 159:
-        setBackgroundColor("silver");
-        break;
-      case count >= 159 && count < 169:
-        setBackgroundColor("maroon");
-        break;
-      case count >= 169 && count < 179:
-        setBackgroundColor("olive");
-        break;
-      case count >= 179 && count < 189:
-        setBackgroundColor("teal");
-        break;
-      case count >= 189 && count < 199:
-        setBackgroundColor("aqua");
-        break;
-      case count >= 199 && count < 209:
-        setBackgroundColor("cyan");
-        break;
-      case count >= 209 && count < 219:
-        setBackgroundColor("skyblue");
-        break;
-      case count >= 219 && count < 229:
-        setBackgroundColor("orchid");
-        break;
-      case count >= 229 && count < 239:
-        setBackgroundColor("purple");
-        break;
-      case count >= 239 && count < 249:
-        setBackgroundColor("fuchsia");
-        break;
-      case count >= 249 && count < 259:
-        setBackgroundColor("purple");
-        break;
-      case count >= 259 && count < 269:
-        setBackgroundColor("pink");
-        break;
-      case count >= 269 && count < 279:
-        setBackgroundColor("plum");
-        break;
-      default:
-        setBackgroundColor("blueviolet");
-        break;
+      }
+      setBackgroundColor("blueviolet");
     }
+  }
+
+  // 이벤트2
+  function eventTwo(): void {
+    type BorderRadius = {
+      [key: string]: string;
+    };
+
+    const borderRadius: BorderRadius = {
+      0: "0%",
+      1: "6.25%",
+      2: "12.5%",
+      3: "18.75%",
+      4: "25%",
+      5: "31.25%",
+      6: "37.5%",
+      7: "43.75%",
+      8: "50%",
+    };
+
+    const eventIndex: number = Math.floor(count / 50);
+    setBorderRadius(borderRadius[eventIndex] || "50%");
   }
 
   return (
@@ -136,6 +123,7 @@ const StartImg = () => {
             countUp();
             rotate();
             eventOne();
+            eventTwo();
           }}
           animate={{
             rotate: divRotate,
@@ -148,6 +136,7 @@ const StartImg = () => {
             backgroundColor: backgroundColor,
             left: 0,
             top: 0,
+            borderRadius: borderRadius,
           }}
           className="absolute flex flex-1"
         >
@@ -159,6 +148,7 @@ const StartImg = () => {
             countUp();
             rotate();
             eventOne();
+            eventTwo();
           }}
           initial={{ opacity: 0 }}
           animate={{
@@ -169,6 +159,7 @@ const StartImg = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           style={{
+            borderRadius: borderRadius,
             width: 100,
             height: 100,
             display: "flex",
