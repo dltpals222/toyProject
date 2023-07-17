@@ -6,9 +6,11 @@ const StartImg = () => {
   const [divRotate, setDivRotate] = useState<number>(0);
   const [randomNumber, setRandomNumber] = useState<number>(0);
   const [randomNumberTwo, setRandomNumberTwo] = useState<number>(0);
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(78);
   const [revertRotate, setRevertRotate] = useState<number>(0);
   const [backgroundColor, setBackgroundColor] = useState<string>("blueviolet");
+  const [divBackgroundColor, setDivBackgroundColor] = useState<string>("#CCC");
+  const [fontColor, setFontColor] = useState<string>("black");
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
   const [borderRadius, setBorderRadius] = useState<string>("0%");
   const [boxSize, setBoxSize] = useState<number>(100);
@@ -18,9 +20,12 @@ const StartImg = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  // 초기 startposition 설정
+  const startLeft = random(0, 800);
+  const startTop = random(0, 800);
   // 클릭시 count 증가
   function countUp() {
-    const newCount = count + 10;
+    const newCount = count + 1;
     setCount(newCount);
     if (newCount === 1000) {
       setIsPopupVisible(true);
@@ -50,106 +55,112 @@ const StartImg = () => {
 
     const backgroundColors: BackgroundColors = {
       9: "red",
-      19: "orange",
-      29: "yellow",
-      39: "green",
-      49: "blue",
-      59: "indigo",
-      69: "violet",
-      79: "purple",
-      89: "pink",
-      99: "black",
-      109: "#ffe4e1",
-      119: "#f0f0f0",
-      129: "gray",
-      139: "grey",
-      149: "silver",
-      159: "maroon",
-      169: "olive",
-      179: "teal",
-      189: "aqua",
-      199: "cyan",
-      209: "skyblue",
-      219: "orchid",
-      229: "purple",
-      239: "fuchsia",
-      249: "purple",
-      259: "pink",
-      269: "plum",
-      279: "navy",
-      289: "magenta",
-      299: "lime",
-      309: "khaki",
-      319: "gold",
-      329: "chocolate",
-      339: "beige",
-      349: "azure",
-      359: "aliceblue",
-      369: "aqua",
-      379: "aquamarine",
-      389: "blueviolet",
-      399: "brown",
-      409: "burlywood",
-      419: "cadetblue",
-      429: "chartreuse",
-      439: "coral",
-      449: "cornflowerblue",
-      459: "cornsilk",
-      469: "crimson",
-      479: "darkblue",
-      489: "darkcyan",
-      499: "darkgoldenrod",
-      509: "darkgray",
-      519: "darkgreen",
-      529: "darkkhaki",
-      539: "darkmagenta",
-      549: "darkolivegreen",
-      559: "darkorange",
-      569: "darkorchid",
-      579: "darkred",
-      589: "darksalmon",
-      599: "darkseagreen",
-      609: "darkslateblue",
-      619: "darkslategray",
-      629: "darkturquoise",
-      639: "darkviolet",
-      649: "deeppink",
-      659: "deepskyblue",
-      669: "dimgray",
-      679: "dodgerblue",
-      689: "firebrick",
-      699: "floralwhite",
-      709: "forestgreen",
-      719: "gainsboro",
-      729: "ghostwhite",
-      739: "goldenrod",
+      19: "#CC3333",
+      29: "lightcyan",
+      39: "darkviolet",
+      49: "darkturquoise",
+      59: "darkseagreen",
+      69: "lightcoral",
+      79: "navy", //todo 글자 밝은색으로 교체
+      89: "gold",
+      99: "skyblue",
+      109: "forestgreen",
+      119: "pink",
+      129: "firebrick",
+      139: "mediumaquamarine",
+      149: "cadetblue",
+      159: "aliceblue",
+      169: "mediumblue",
+      179: "crimson", //todo 글자 밝은색으로 교체
+      189: "lightsalmon",
+      199: "slategray",
+      209: "ivory",
+      219: "chocolate",
+      229: "lavenderblush",
+      239: "pink",
+      249: "burlywood",
+      259: "darkorange",
+      269: "lemonchiffon",
+      279: "dodgerblue",
+      289: "khaki",
+      299: "darkcyan",
+      309: "azure",
+      319: "lime",
+      329: "mintcream",
+      339: "lightgoldenrodyellow",
+      349: "violet",
+      359: "darkred", //todo 글자 밝은색으로 교체
+      369: "cornsilk",
+      379: "lightskyblue",
+      389: "mediumblue", //todo 글자 밝은색으로 교체
+      399: "darkorchid",
+      409: "deepskyblue",
+      419: "darkgoldenrod",
+      429: "darkblue", //todo 글자 밝은색으로 교체
+      439: "limegreen",
+      449: "hotpink",
+      459: "darkkhaki",
+      469: "fuchsia",
+      479: "darkolivegreen",
+      489: "aqua",
+      499: "dimgray", //todo 글자 밝은색으로 교체
+      509: "lightgrey", //* 배경색 교체
+      519: "darkslategray", //todo 글자 밝은색으로 교체
+      529: "saddlebrown", //todo 글자 밝은색으로 교체
+      539: "darkmagenta", //todo 글자 밝은색으로 교체
+      549: "deeppink",
+      559: "seagreen",
+      569: "lightgreen",
+      579: "coral",
+      589: "steelblue",
+      599: "#ffe4e1",
+      609: "indigo", //todo 글자 밝은색으로 교체
+      619: "gainsboro",
+      629: "darkgray", //* 배경색 교체
+      639: "purple", //todo 글자 밝은색으로 교체 + 배경색 교체
+      649: "darkslateblue", //todo 글자 밝은색으로 교체
+      659: "lightpink",
+      669: "darkgreen",
+      679: "lightsteelblue",
+      689: "peachpuff",
+      699: "plum",
+      709: "wheat",
+      719: "brown", //todo 글자 밝은색으로 교체
+      729: "lawngreen",
+      739: "mistyrose",
       749: "greenyellow",
-      759: "honeydew",
-      769: "hotpink",
-      779: "indianred",
-      789: "ivory",
-      799: "lavender",
-      809: "lavenderblush",
-      819: "lawngreen",
-      829: "lemonchiffon",
-      839: "lightblue",
-      849: "lightcoral",
-      859: "lightcyan",
-      869: "lightgoldenrodyellow",
-      879: "lightgreen",
-      889: "lightgrey",
-      899: "lightpink",
-      909: "lightsalmon",
-      919: "lightseagreen",
-      929: "lightskyblue",
-      939: "lightslategray",
-      949: "lightsteelblue",
-      959: "lightyellow",
-      969: "limegreen",
-      979: "linen",
-      989: "mediumaquamarine",
-      999: "mediumblue",
+      759: "thistle",
+      769: "olivedrab", //todo 글자 밝은색으로 교체 + 배경색 교체
+      779: "tan",
+      789: "black", //todo 글자 밝은색으로 교체
+      799: "mediumpurple",
+      809: "palevioletred",
+      819: "orange",
+      829: "orchid",
+      839: "turquoise",
+      849: "moccasin",
+      859: "yellowgreen",
+      869: "rosybrown",
+      879: "indianred",
+      889: "paleturquoise",
+      899: "mediumorchid",
+      909: "chartreuse",
+      919: "midnightblue", //todo 글자 밝은색으로 교체
+      929: "lightslategray",
+      939: "darkviolet", //todo 글자 밝은색으로 교체
+      949: "aqua",
+      959: "silver", //* 배경색 교체
+      969: "lightblue", //* 배경색 교체
+      979: "yellow",
+      989: "purple", //todo 글자 밝은색으로 교체
+      999: "darkcyan", //todo 글자 밝은색으로 교체
     };
+
+    const changeFontColorNumbers = [
+      79, 179, 359, 389, 429, 499, 519, 529, 539, 609, 639, 649, 719, 769, 789, 919, 939, 989, 999,
+    ];
+
+    const changeBackgroundColorNumbers = [509, 629, 639, 769, 959, 969];
 
     const countKeys = Object.keys(backgroundColors);
 
@@ -160,6 +171,17 @@ const StartImg = () => {
         break;
       }
       setBackgroundColor("blueviolet");
+    }
+
+    if (changeFontColorNumbers.includes(count)) {
+      setFontColor("white");
+    } else {
+      setFontColor("black");
+    }
+    if (changeBackgroundColorNumbers.includes(count)) {
+      setDivBackgroundColor("#F1ECE1");
+    } else {
+      setFontColor("black");
     }
   }
 
@@ -204,7 +226,7 @@ const StartImg = () => {
       // 2초 후에 박스 크기를 원래대로 돌리고 나머지 이벤트를 실행하게 돕니다.
       setTimeout(() => {
         setBoxSize(100);
-      }, 2000);
+      }, 200);
     }
   }
 
@@ -212,8 +234,8 @@ const StartImg = () => {
     <AnimatePresence>
       <div
         onClick={() => resetCount()}
-        style={{ width: "100vw", height: "100vh" }}
-        className="flex align-center relative"
+        style={{ backgroundColor: divBackgroundColor }}
+        className="flex align-center relative containerDiv"
       >
         {/* <Block blockNumber="first" colorStyle="signiture-color-red"></Block> */}
         <motion.div
@@ -227,8 +249,8 @@ const StartImg = () => {
           }}
           animate={{
             rotate: divRotate,
-            left: randomNumber,
-            top: randomNumberTwo,
+            left: randomNumber === 0 ? startLeft : randomNumber,
+            top: randomNumberTwo === 0 ? startTop : randomNumberTwo,
             width: boxSize,
             height: boxSize,
           }}
@@ -236,8 +258,8 @@ const StartImg = () => {
             width: 100,
             height: 100,
             backgroundColor: backgroundColor,
-            left: 0,
-            top: 0,
+            left: randomNumber === 0 ? startLeft : randomNumber,
+            top: randomNumberTwo === 0 ? startTop : randomNumberTwo,
             borderRadius: borderRadius,
           }}
           className="absolute flex flex-1"
@@ -254,8 +276,8 @@ const StartImg = () => {
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            left: randomNumber,
-            top: randomNumberTwo,
+            left: randomNumber === 0 ? startLeft : randomNumber,
+            top: randomNumberTwo === 0 ? startTop : randomNumberTwo,
             width: boxSize,
             height: boxSize,
           }}
@@ -270,6 +292,7 @@ const StartImg = () => {
             justifyContent: "center",
             fontWeight: 700,
             fontSize: "1.5em",
+            color: fontColor,
           }}
           className="absolute"
         >

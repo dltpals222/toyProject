@@ -82,3 +82,11 @@
 .rotate-90 {
   transform: rotate(90deg);
 }
+.containerDiv {
+  width: 100vw;
+  height: 100vh;
+  border: 1px black solid;
+  min-width: 900px;
+  min-height: 900px;
+  background-color: #ccc;
+}
