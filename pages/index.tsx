@@ -6,7 +6,7 @@ const StartImg = () => {
   const [divRotate, setDivRotate] = useState<number>(0);
   const [randomNumber, setRandomNumber] = useState<number>(0);
   const [randomNumberTwo, setRandomNumberTwo] = useState<number>(0);
-  const [count, setCount] = useState<number>(78);
+  const [count, setCount] = useState<number>(638);
   const [revertRotate, setRevertRotate] = useState<number>(0);
   const [backgroundColor, setBackgroundColor] = useState<string>("blueviolet");
   const [divBackgroundColor, setDivBackgroundColor] = useState<string>("#CCC");
@@ -156,12 +156,6 @@ const StartImg = () => {
       999: "darkcyan", //todo 글자 밝은색으로 교체
     };
 
-    const changeFontColorNumbers = [
-      79, 179, 359, 389, 429, 499, 519, 529, 539, 609, 639, 649, 719, 769, 789, 919, 939, 989, 999,
-    ];
-
-    const changeBackgroundColorNumbers = [509, 629, 639, 769, 959, 969];
-
     const countKeys = Object.keys(backgroundColors);
 
     for (let i = 0; i < countKeys.length; i++) {
@@ -173,48 +167,60 @@ const StartImg = () => {
       setBackgroundColor("blueviolet");
     }
 
-    if (changeFontColorNumbers.includes(count)) {
-      setFontColor("white");
-    } else {
+    const changeFontColorNumbers = [
+      79, 179, 359, 389, 429, 499, 519, 529, 539, 609, 639, 649, 719, 769, 789, 919, 939, 989, 999,
+    ];
+    const changeDivBackgroundColorNumbers = [509, 629, 639, 769, 959, 969];
+
+    for (let i = 0; i < changeFontColorNumbers.length; i++) {
+      const key = changeFontColorNumbers[i];
+      if (count >= key && count < key + 10) {
+        setFontColor("white");
+        break;
+      }
       setFontColor("black");
     }
-    if (changeBackgroundColorNumbers.includes(count)) {
-      setDivBackgroundColor("#F1ECE1");
-    } else {
-      setFontColor("black");
+
+    for (let i = 0; i < changeDivBackgroundColorNumbers.length; i++) {
+      const key = changeDivBackgroundColorNumbers[i];
+      if (count >= key && count < key + 10) {
+        setDivBackgroundColor("black");
+        break;
+      }
+      setDivBackgroundColor("#ccc");
     }
   }
 
   // 이벤트2
   function eventTwo(): void {
     type BorderRadius = {
-      [key: string]: string;
+      [key: number]: string;
     };
     const borderRadius: BorderRadius = {
-      "0": "0%",
-      "1": "1%",
-      "2": "2%",
-      "3": "3%",
-      "4": "4%",
-      "5": "5%",
-      "6": "6%",
-      "7": "7%",
-      "8": "8%",
-      "9": "9%",
-      "10": "10%",
-      "11": "12.5%",
-      "12": "15%",
-      "13": "17.5%",
-      "14": "20%",
-      "15": "22.5%",
-      "16": "25%",
-      "17": "30%",
-      "18": "35%",
-      "19": "40%",
-      "20": "50%",
+      0: "0%",
+      1: "1%",
+      2: "2%",
+      3: "3%",
+      4: "4%",
+      5: "5%",
+      6: "6%",
+      7: "7%",
+      8: "8%",
+      9: "9%",
+      10: "10%",
+      11: "12.5%",
+      12: "15%",
+      13: "17.5%",
+      14: "20%",
+      15: "22.5%",
+      16: "25%",
+      17: "30%",
+      18: "35%",
+      19: "40%",
+      20: "50%",
     };
     const eventIndex: number = Math.floor(count / 50);
-    setBorderRadius(borderRadius[eventIndex.toString()] || "50%");
+    setBorderRadius(borderRadius[eventIndex] || "50%");
   }
 
   // 이벤트3
@@ -285,40 +291,15 @@ const StartImg = () => {
           transition={{ duration: 0.2 }}
           style={{
             borderRadius: borderRadius,
-            width: 100,
-            height: 100,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontWeight: 700,
-            fontSize: "1.5em",
             color: fontColor,
           }}
-          className="absolute"
+          className="absolute move-div"
         >
           {count}
         </motion.div>
         {isPopupVisible && (
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "rgba(0,0,0,0.5)",
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: "white",
-                borderRadius: "5px",
-                padding: "1em",
-              }}
-            >
+          <div className="isPopupVisibleContainer">
+            <div className="isPopupVisible">
               <h2>축하합니다. 1000번 클릭하셨군요!</h2>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <button className="buttonStyle" onClick={() => setIsPopupVisible(false)}>
