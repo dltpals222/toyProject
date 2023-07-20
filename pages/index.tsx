@@ -10,8 +10,8 @@ const Start = () => {
         <Link href={"thousand"} className="card">
           <div className="card__background"></div>
           <div className="card__content">
-            <div className="card__category">Thousand Click</div>
-            <div className="card__heading">게임시작</div>
+            <div className="card__category">미니게임</div>
+            <div className="card__heading">Thousand Click</div>
           </div>
         </Link>
       </div>

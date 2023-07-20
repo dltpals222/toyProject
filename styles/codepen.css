@@ -76,6 +76,7 @@ body {
 }
 
 .card__background {
+  background-image: url("../public/img/thousand.png");
   background-size: cover;
   background-position: center;
   border-radius: var(--spacing-l);
