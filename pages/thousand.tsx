@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const StartImg = () => {
+const GameStart = () => {
   // 상태 관리
   const [divRotate, setDivRotate] = useState<number>(0);
   const [randomNumber, setRandomNumber] = useState<number>(0);
@@ -315,4 +315,4 @@ const StartImg = () => {
   );
 };
 
-export default StartImg;
+export default GameStart;
